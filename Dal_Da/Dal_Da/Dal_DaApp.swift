@@ -11,7 +11,7 @@ import SwiftUI
 struct Dal_DaApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }

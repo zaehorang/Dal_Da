@@ -12,6 +12,14 @@
 		26FA68F32BCA577B00FD33CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26FA68F22BCA577B00FD33CD /* Assets.xcassets */; };
 		26FA68F62BCA577B00FD33CD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26FA68F52BCA577B00FD33CD /* Preview Assets.xcassets */; };
 		26FA68FD2BCA58FF00FD33CD /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FA68FC2BCA58FF00FD33CD /* SplashView.swift */; };
+		26FA68FF2BCA6CB600FD33CD /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FA68FE2BCA6CB600FD33CD /* CameraView.swift */; };
+		26FA69012BCA6E4300FD33CD /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FA69002BCA6E4300FD33CD /* DateView.swift */; };
+		26FA69052BCA752E00FD33CD /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FA69042BCA752E00FD33CD /* Assets.swift */; };
+		26FA690A2BCA81EB00FD33CD /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FA69092BCA81EB00FD33CD /* HomeView.swift */; };
+		26FA690D2BCB835600FD33CD /* SnapCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FA690C2BCB835600FD33CD /* SnapCarouselView.swift */; };
+		26FA690F2BCB854C00FD33CD /* Moon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FA690E2BCB854C00FD33CD /* Moon.swift */; };
+		26FA69112BCB86D300FD33CD /* MoonCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FA69102BCB86D300FD33CD /* MoonCardView.swift */; };
+		26FA69132BCBC9EB00FD33CD /* MoonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FA69122BCBC9EB00FD33CD /* MoonDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +29,14 @@
 		26FA68F22BCA577B00FD33CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		26FA68F52BCA577B00FD33CD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		26FA68FC2BCA58FF00FD33CD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		26FA68FE2BCA6CB600FD33CD /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		26FA69002BCA6E4300FD33CD /* DateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateView.swift; sourceTree = "<group>"; };
+		26FA69042BCA752E00FD33CD /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		26FA69092BCA81EB00FD33CD /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		26FA690C2BCB835600FD33CD /* SnapCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCarouselView.swift; sourceTree = "<group>"; };
+		26FA690E2BCB854C00FD33CD /* Moon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moon.swift; sourceTree = "<group>"; };
+		26FA69102BCB86D300FD33CD /* MoonCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonCardView.swift; sourceTree = "<group>"; };
+		26FA69122BCBC9EB00FD33CD /* MoonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +71,10 @@
 			children = (
 				26FA68EE2BCA577900FD33CD /* Dal_DaApp.swift */,
 				26FA68F02BCA577900FD33CD /* ContentView.swift */,
+				26FA69032BCA750B00FD33CD /* Resources */,
 				26FA68FC2BCA58FF00FD33CD /* SplashView.swift */,
-				26FA68F22BCA577B00FD33CD /* Assets.xcassets */,
+				26FA68FE2BCA6CB600FD33CD /* CameraView.swift */,
+				26FA69062BCA7C3B00FD33CD /* HomeView */,
 				26FA68F42BCA577B00FD33CD /* Preview Content */,
 			);
 			path = Dal_Da;
@@ -68,6 +86,36 @@
 				26FA68F52BCA577B00FD33CD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		26FA69032BCA750B00FD33CD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				26FA69042BCA752E00FD33CD /* Assets.swift */,
+				26FA68F22BCA577B00FD33CD /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		26FA69062BCA7C3B00FD33CD /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				26FA690B2BCB82BE00FD33CD /* CarouselCardView */,
+				26FA69002BCA6E4300FD33CD /* DateView.swift */,
+				26FA69092BCA81EB00FD33CD /* HomeView.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		26FA690B2BCB82BE00FD33CD /* CarouselCardView */ = {
+			isa = PBXGroup;
+			children = (
+				26FA690C2BCB835600FD33CD /* SnapCarouselView.swift */,
+				26FA690E2BCB854C00FD33CD /* Moon.swift */,
+				26FA69102BCB86D300FD33CD /* MoonCardView.swift */,
+				26FA69122BCBC9EB00FD33CD /* MoonDetailView.swift */,
+			);
+			path = CarouselCardView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,9 +188,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26FA69012BCA6E4300FD33CD /* DateView.swift in Sources */,
+				26FA690F2BCB854C00FD33CD /* Moon.swift in Sources */,
+				26FA690A2BCA81EB00FD33CD /* HomeView.swift in Sources */,
 				26FA68F12BCA577900FD33CD /* ContentView.swift in Sources */,
+				26FA69052BCA752E00FD33CD /* Assets.swift in Sources */,
+				26FA690D2BCB835600FD33CD /* SnapCarouselView.swift in Sources */,
 				26FA68EF2BCA577900FD33CD /* Dal_DaApp.swift in Sources */,
 				26FA68FD2BCA58FF00FD33CD /* SplashView.swift in Sources */,
+				26FA68FF2BCA6CB600FD33CD /* CameraView.swift in Sources */,
+				26FA69112BCB86D300FD33CD /* MoonCardView.swift in Sources */,
+				26FA69132BCBC9EB00FD33CD /* MoonDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,7 +16,7 @@ struct SplashView: View {
             if self.isActive {
                 ContentView()
             } else {
-                Image("Splash")
+                Image(Asset.splash.fileName)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .edgesIgnoringSafeArea(.top)
