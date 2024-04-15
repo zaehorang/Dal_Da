@@ -16,7 +16,7 @@ struct Moon: Identifiable, Hashable {
 
 extension Moon {
     static var previews: [Moon] = [
-        Moon(id: 0, date: "Jul 23, 2024", shape: "Full Moon", memo: "주저리 주저리 주저리 주저리주저리 주저리", image: "Moon1"),
+        Moon(id: 0, date: "Jul 23, 2024", shape: "Full Moon", memo: "주저리 주저리 주저리 주저리 주저리 주저리", image: "Moon1"),
     Moon(id: 1, date: "Jul 23, 2024", shape: "Full Moon", memo: "주저리 주저리 주저리 주저리주저리 주저리", image: "Moon2"),
     Moon(id: 2, date: "Jul 23, 2024", shape: "Full Moon", memo: "주저리 주저리 주저리 주저리주저리 주저리", image: "Moon3"),
     Moon(id: 3, date: "Jul 23, 2024", shape: "Full Moon", memo: "주저리 주저리 주저리 주저리주저리 주저리", image: "Moon1"),

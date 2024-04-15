@@ -26,7 +26,7 @@ struct DateView: View {
             .padding(.vertical, 5)
             Spacer()
         }
-        .background(Color.background)
+        .background(Color.clear)
 
     }
 }

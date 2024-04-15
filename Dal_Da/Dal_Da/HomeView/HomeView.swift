@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct HomeView: View {
+
     var body: some View {
         
+        NavigationStack {
             ZStack(alignment: .top) {
                 
                 SnapCarouselView()
@@ -17,16 +19,20 @@ struct HomeView: View {
                 
             }
             .overlay(alignment: .bottom) {
-                Button {
-                        
+                
+                NavigationLink {
+                    CameraView()
                 } label: {
                     Image(Asset.moonButton.fileName)
-
                 }
+                
             }
+        }
+        .tint(.white)  // 백 버튼 컬러 수정
     }
 }
 
 #Preview {
     HomeView()
 }
+
