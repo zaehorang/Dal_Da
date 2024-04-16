@@ -24,6 +24,7 @@ class CameraViewModel: ObservableObject {
     
     @Published var shutterEffect = false  // 화면 깜빡임
     @Published var recentImage: UIImage?   // combine
+    @Published var photoTaken = false
     @Published var isFlashOn = false
     @Published var isSilentModeOn = false
     
@@ -77,9 +78,7 @@ class CameraViewModel: ObservableObject {
         print("[CameraViewModel]: Camera changed!")
     }
     
-    
-    
-    
+    //MARK: - init 메서드
     init() {
         model = Camera()
         session = model.session
@@ -89,7 +88,8 @@ class CameraViewModel: ObservableObject {
         // model의 recentImage가 optional
         model.$recentImage.sink { [weak self] (photo) in
             guard let pic = photo else { return }
-            self?.recentImage = pic
+            self?.recentImage = pic  // 이미지 저장
+            self?.photoTaken = true  // 저장을 알림
         }
         .store(in: &self.subscriptions)
         

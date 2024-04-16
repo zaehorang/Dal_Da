@@ -14,7 +14,7 @@ struct SplashView: View {
     var body: some View {
         ZStack {
             if self.isActive {
-                ContentView()
+                HomeView()
             } else {
                 Image(Asset.splash.fileName)
                     .resizable()

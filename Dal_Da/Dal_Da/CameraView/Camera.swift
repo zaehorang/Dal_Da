@@ -18,7 +18,7 @@ class Camera: NSObject, ObservableObject {
     @Published var isCameraBusy = false  // 사진 처리 중 버튼 Lock을 위한 property
     @Published var recentImage: UIImage?  // combine
     
-    //    private let cameraQueue = DispatchQueue(label: "cameraQueue")
+    private let cameraQueue = DispatchQueue(label: "cameraQueue")
     
     
     // 카메라 셋업 과정을 담당하는 함수, positio
@@ -36,7 +36,10 @@ class Camera: NSObject, ObservableObject {
                     output.isHighResolutionCaptureEnabled = true
                     output.maxPhotoQualityPrioritization = .quality
                 }
-                session.startRunning() // 세션 시작
+                self.cameraQueue.async {
+                    // startRunning() method is bolcking call
+                    self.session.startRunning() // 세션 시작
+                }
             } catch {
                 print(error) // 에러 프린트
             }
@@ -50,9 +53,7 @@ class Camera: NSObject, ObservableObject {
             // 권한 요청
             AVCaptureDevice.requestAccess(for: .video) { [weak self] authStatus in
                 if authStatus {
-                    DispatchQueue.main.async {
-                        self?.setUpCamera()
-                    }
+                    self?.setUpCamera()
                 }
             }
         case .restricted:
@@ -155,7 +156,7 @@ class Camera: NSObject, ObservableObject {
     
 }
 
-
+//MARK: - Delegate 확장
 extension Camera: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, willBeginCaptureFor resolvedSettings: AVCaptureResolvedPhotoSettings) {
         self.isCameraBusy = true
@@ -181,4 +182,5 @@ extension Camera: AVCapturePhotoCaptureDelegate {
         
         self.isCameraBusy = false
     }
+    
 }

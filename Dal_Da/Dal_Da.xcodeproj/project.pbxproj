@@ -23,6 +23,8 @@
 		26FA691E2BCD157800FD33CD /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FA691D2BCD157800FD33CD /* CameraViewModel.swift */; };
 		26FA69202BCD15C200FD33CD /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FA691F2BCD15C200FD33CD /* CameraPreviewView.swift */; };
 		26FA69222BCD17AA00FD33CD /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FA69212BCD17AA00FD33CD /* Camera.swift */; };
+		26FA692D2BCE619D00FD33CD /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FA692C2BCE619D00FD33CD /* ImageView.swift */; };
+		26FA69332BCE9BE800FD33CD /* ImageInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FA69322BCE9BE800FD33CD /* ImageInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		26FA691F2BCD15C200FD33CD /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 		26FA69212BCD17AA00FD33CD /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		26FA69232BCD1ABE00FD33CD /* Dal-Da-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Dal-Da-Info.plist"; sourceTree = SOURCE_ROOT; };
+		26FA692C2BCE619D00FD33CD /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		26FA69322BCE9BE800FD33CD /* ImageInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,7 @@
 				26FA68FC2BCA58FF00FD33CD /* SplashView.swift */,
 				26FA69062BCA7C3B00FD33CD /* HomeView */,
 				26FA69142BCC1BDB00FD33CD /* CameraView */,
+				26FA69292BCE616100FD33CD /* ImageVIew */,
 				26FA68F42BCA577B00FD33CD /* Preview Content */,
 			);
 			path = Dal_Da;
@@ -135,6 +140,15 @@
 				26FA69212BCD17AA00FD33CD /* Camera.swift */,
 			);
 			path = CameraView;
+			sourceTree = "<group>";
+		};
+		26FA69292BCE616100FD33CD /* ImageVIew */ = {
+			isa = PBXGroup;
+			children = (
+				26FA692C2BCE619D00FD33CD /* ImageView.swift */,
+				26FA69322BCE9BE800FD33CD /* ImageInfoView.swift */,
+			);
+			path = ImageVIew;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26FA692D2BCE619D00FD33CD /* ImageView.swift in Sources */,
 				26FA69012BCA6E4300FD33CD /* DateView.swift in Sources */,
 				26FA690F2BCB854C00FD33CD /* Moon.swift in Sources */,
 				26FA690A2BCA81EB00FD33CD /* HomeView.swift in Sources */,
@@ -214,6 +229,7 @@
 				26FA68F12BCA577900FD33CD /* ContentView.swift in Sources */,
 				26FA691E2BCD157800FD33CD /* CameraViewModel.swift in Sources */,
 				26FA69052BCA752E00FD33CD /* Assets.swift in Sources */,
+				26FA69332BCE9BE800FD33CD /* ImageInfoView.swift in Sources */,
 				26FA690D2BCB835600FD33CD /* SnapCarouselView.swift in Sources */,
 				26FA68EF2BCA577900FD33CD /* Dal_DaApp.swift in Sources */,
 				26FA68FD2BCA58FF00FD33CD /* SplashView.swift in Sources */,

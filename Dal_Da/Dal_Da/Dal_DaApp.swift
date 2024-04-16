@@ -12,7 +12,7 @@ struct Dal_DaApp: App {
     
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            SplashView()
         }
     }
 }
