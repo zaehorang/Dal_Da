@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct MoonCardView: View {
-    var moon: Moon
+    var moon: MoonCard
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
@@ -47,5 +47,5 @@ struct MoonCardView: View {
 }
 
 #Preview {
-    MoonCardView(moon: Moon.previews[1])
+    MoonCardView(moon: MoonCard.previews[1])
 }

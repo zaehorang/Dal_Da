@@ -15,7 +15,7 @@ struct SnapCarouselView: View {
     
     
     // 표시할 이미지 데이터 배열
-    private let moons = Moon.previews
+    private let moons = MoonCard.previews
     
     var body: some View {
         // 네비게이션 스택을 사용하여 뷰를 구성

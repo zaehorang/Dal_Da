@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MoonDetailView: View {
-    var moon: Moon
+    var moon: MoonCard
     
     var body: some View {
         Text("Details for \(moon.shape)")
@@ -18,5 +18,5 @@ struct MoonDetailView: View {
 }
 
 #Preview {
-    MoonDetailView(moon: Moon.previews[1])
+    MoonDetailView(moon: MoonCard.previews[1])
 }

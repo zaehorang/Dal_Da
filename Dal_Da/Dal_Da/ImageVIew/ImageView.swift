@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct ImageView: View {
     
     @Environment(\.dismiss) var dismiss
@@ -14,6 +15,9 @@ struct ImageView: View {
     @State private var memo = ""
     @State private var showDate = true
     @State private var showMoobShape = true
+    
+    // 현재 날짜를 저장하는 프로퍼티
+    let currentDate = Date()
     
     var image: UIImage?
     
@@ -61,6 +65,7 @@ struct ImageView: View {
                     
                     Image(uiImage: image)
                         .resizable()
+                    
                         .overlay( // 이 부분에서 그라디언트를 이미지 위에 추가
                             LinearGradient(gradient: Gradient(colors: [.clear, .black.opacity(0.3)]), startPoint: .center, endPoint: .bottom)// 그라디언트의 투명도 조절
                         )
@@ -75,36 +80,35 @@ struct ImageView: View {
                 
                 
                 VStack(alignment: .leading, spacing: 2) {
-                    
-                    Text("Jul 23, 2024")
+                    Text(DateUtilities.formatDateTime(currentDate, formatType: "MMM dd, yyyy")) // 날짜
                         .font(.system(size: 36, weight: .medium))
                         .foregroundColor(.white)
                     
                     
                     VStack(alignment: .leading, spacing: 10) {
-                        Text("Sunday, Full Moon")
+                        Text("\(DateUtilities.formatDateTime(currentDate, formatType: "EEEE")), \(DateUtilities.moonPhaseEnglishName(on: currentDate))")  // 요일
                             .font(.system(size: 14, weight: .regular))
-                            .foregroundColor(.gray100)
+                            .foregroundColor(.white)
                         
                         Text(memo)
                             .font(.system(size: 16, weight: .regular))
-                            .foregroundColor(.gray100)
+                            .foregroundColor(.white)
                     }
                 }
                 .padding()
                 
             }
             
-            
             ImageInfoView(memo: $memo, showDate: $showDate, showMoobShape: $showMoobShape)
-            
-            
             
         }
     }
+    
 }
-//
-//#Preview {
-//    ImageView()
-//}
+
+
+#Preview {
+    ImageView()
+}
+
 
