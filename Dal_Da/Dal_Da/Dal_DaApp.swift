@@ -6,13 +6,16 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct Dal_DaApp: App {
     
     var body: some Scene {
         WindowGroup {
-            SplashView()
+            ContentView()
+                .modelContainer(for: Moon.self)
         }
+        
     }
 }

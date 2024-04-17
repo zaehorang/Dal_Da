@@ -8,11 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var isActive: Bool = false
+    // MARK: - 🙋🏻 환경변수 추가
+    @Environment(\.modelContext) private var modelContext
+    
     var body: some View {
-        NavigationStack {
-            //            Text{"dkdk"}
+        ZStack {
+            if self.isActive {
+                HomeView()
+            } else {
+                SplashView()
+            }
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                withAnimation {
+                    self.isActive = true
+                }
+            }
         }
     }
+    
 }
 #Preview {
     ContentView()

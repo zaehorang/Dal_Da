@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct MoonCardView: View {
-    var moon: MoonCard
+    var moon: Moon
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
@@ -44,7 +44,7 @@ struct MoonCardView: View {
                 // 이미지 하단에 위치할 텍스트
                 VStack(alignment: .leading,spacing:4) {
                     //
-                    Text("\(DateUtilities.formatDateTime(moon.date, formatType: "EEEE")), \(moon.shape.details.englishName)")
+                    Text("\(DateUtilities.formatDateTime(moon.date, formatType: "EEEE")), \(DateUtilities.moonPhaseEnglishName(on: moon.date))")
                         .font(.system(size: 16, weight: .regular))
                         .foregroundColor(.gray100)
                     
@@ -61,5 +61,5 @@ struct MoonCardView: View {
 }
 
 #Preview {
-    MoonCardView(moon: MoonCard.previews[1])
+    MoonCardView(moon: Moon(date: Date(), shape: "Full Moon", memo: "주저리 주저리 주저리 주저리 주저리 주저리", image: UIImage(named: "Moon1")!.pngData()!))
 }

@@ -9,13 +9,13 @@ import Foundation
 import SwiftData
 
 @Model
-final class MoonCard {
+final class Moon {
     var date: Date
-    var shape: MoonPhase
+    var shape: String
     var memo: String
     var image: Data
     
-    init(date: Date = .now, shape: MoonPhase, memo: String, image: Data) {
+    init(date: Date = .now, shape: String, memo: String, image: Data) {
         //        self.id = id
         self.date = date
         self.shape = shape
@@ -26,10 +26,10 @@ final class MoonCard {
 }
 
 
-extension MoonCard: Identifiable { }
+extension Moon: Identifiable { }
 
-extension MoonCard: Hashable {
-    static func == (lhs: MoonCard, rhs: MoonCard) -> Bool {
+extension Moon: Hashable {
+    static func == (lhs: Moon, rhs: Moon) -> Bool {
         lhs.image == rhs.image
     }
     

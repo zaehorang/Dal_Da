@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
-
+import SwiftData
 
 struct ImageView: View {
-    
+    @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel: CameraViewModel
     
@@ -25,6 +25,8 @@ struct ImageView: View {
     var image: UIImage?
     
     var body: some View {
+        
+        let moonShape = DateUtilities.moonPhaseEnglishName(on: currentDate)
         
         VStack(spacing: 0) {
             ZStack {
@@ -43,8 +45,14 @@ struct ImageView: View {
                     Spacer()
                     
                     Button {
+                        if let image {
+                            let newMoon = Moon(date: currentDate, shape: moonShape, memo: memo, image: image.pngData()!)
+                            modelContext.insert(newMoon)
+                            
+                            // 데이터 저자아아아앙
+                        }
                         isDismiss = true
-                        viewModel.savePhoto(image)
+//                        viewModel.savePhoto(image)
                         dismiss()  // 이미지 뷰만 내려감
                     } label: {
                         Text("저장")
@@ -92,7 +100,7 @@ struct ImageView: View {
                     
                     VStack(alignment: .leading, spacing: 10) {
                         if showMoonShape {
-                            Text("\(DateUtilities.formatDateTime(currentDate, formatType: "EEEE")), \(DateUtilities.moonPhaseEnglishName(on: currentDate))")  // 요일
+                            Text("\(DateUtilities.formatDateTime(currentDate, formatType: "EEEE")), \(moonShape)")  // 요일
                             .font(.system(size: 14, weight: .regular))
                             .foregroundColor(.white)
                     }
@@ -111,12 +119,5 @@ struct ImageView: View {
     }
     
 }
-
-
-//#Preview {
-//    let viewModel = CameraViewModel()
-//
-//    ImageView(viewModel: viewModel)
-//}
 
 

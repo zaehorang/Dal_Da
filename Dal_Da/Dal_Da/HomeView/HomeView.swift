@@ -6,22 +6,18 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct HomeView: View {
-    
-    // 표시할 이미지 데이터 배열
-    @State private var moons: [MoonCard] = [
-        MoonCard(date: Date(), shape: .fullMoon, memo: "주저리 주저리 주저리 주저리 주저리 주저리", image: UIImage(named: "Moon1")!.pngData()!),
-        MoonCard(date: Date(), shape: .fullMoon, memo: "주저리 주저리 주저리 주저리주저리 주저리", image: UIImage(named: "Moon2")!.pngData()!),
-        MoonCard(date: Date(), shape: .fullMoon, memo: "주저리 주저리 주저리 주저리주저리 주저리", image: UIImage(named: "Moon3")!.pngData()!),
-    ]
+    @Query var moons: [Moon]
     
     var body: some View {
         
         NavigationStack {
             ZStack(alignment: .top) {
                 
-                SnapCarouselView(moons: $moons)
+                SnapCarouselView(moons: moons.reversed())
+                
                 DateView()
                 
             }

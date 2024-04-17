@@ -15,7 +15,7 @@ struct SnapCarouselView: View {
     
     
     // 표시할 이미지 데이터 배열
-    @Binding var moons: [MoonCard]
+    var moons: [Moon]
     
     var body: some View {
         // 네비게이션 스택을 사용하여 뷰를 구성
@@ -68,9 +68,9 @@ struct SnapCarouselView: View {
 
 
 #Preview {
-    SnapCarouselView(moons: .constant([
-        MoonCard(date: Date(), shape: .fullMoon, memo: "주저리 주저리 주저리 주저리 주저리 주저리", image: UIImage(named: "Moon1")!.pngData()!),
-        MoonCard(date: Date(), shape: .fullMoon, memo: "주저리 주저리 주저리 주저리주저리 주저리", image: UIImage(named: "Moon2")!.pngData()!),
-        MoonCard(date: Date(), shape: .fullMoon, memo: "주저리 주저리 주저리 주저리주저리 주저리", image: UIImage(named: "Moon3")!.pngData()!),
-    ]))
+    SnapCarouselView(moons: [
+        Moon(date: Date(), shape: "fullMoon", memo: "주저리 주저리 주저리 주저리 주저리 주저리", image: UIImage(named: "Moon1")!.pngData()!),
+        Moon(date: Date(), shape: "Full Moon", memo: "주저리 주저리 주저리 주저리주저리 주저리", image: UIImage(named: "Moon2")!.pngData()!),
+        Moon(date: Date(), shape: "Full Moon", memo: "주저리 주저리 주저리 주저리주저리 주저리", image: UIImage(named: "Moon3")!.pngData()!),
+    ])
 }
