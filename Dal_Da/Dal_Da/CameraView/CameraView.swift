@@ -12,6 +12,9 @@ struct CameraView: View {
     
     @ObservedObject var viewModel = CameraViewModel()
     
+    @State var isDismiss = false
+    
+    
     var body: some View {
         
         VStack(spacing: 0) {  // default spacing이 있어서 0을 안주면 분리되어 보임
@@ -21,7 +24,7 @@ struct CameraView: View {
                     
                     Button {
                         dismiss()
-
+                        
                     } label: {
                         Image(systemName: "chevron.backward")
                             .tint(.white)
@@ -92,30 +95,29 @@ struct CameraView: View {
                     
                     Spacer()
                     
-//                    NavigationLink {
-//                        ImageView(viewModel: viewModel, image: viewModel.recentImage)
-//                    } label: {
-//                        Button {
-//                            viewModel.capturePhoto()
-//
-//                        } label: {
-//                            Image(Asset.moonButton.fileName)
-//                            
-//                        }
-//                    }
+                    //                    NavigationLink {
+                    //                        ImageView(viewModel: viewModel, image: viewModel.recentImage)
+                    //                    } label: {
+                    //                        Button {
+                    //                            viewModel.capturePhoto()
+                    //
+                    //                        } label: {
+                    //                            Image(Asset.moonButton.fileName)
+                    //
+                    //                        }
+                    //                    }
                     // 사진찍기 버튼
                     Button {
                         viewModel.capturePhoto()
-
+                        
                     } label: {
                         Image(Asset.moonButton.fileName)
                         
                     }
                     .fullScreenCover(isPresented: $viewModel.photoTaken) {
-                        
-                        ImageView(viewModel: viewModel, image: viewModel.recentImage)
+                        ImageView(viewModel: viewModel, isDismiss: $isDismiss, image: viewModel.recentImage)
                     }
-
+                    
                     
                     Spacer()
                     
@@ -135,26 +137,30 @@ struct CameraView: View {
                     
                 }
                 
-//                HStack {
-//                    Button {
-//                        print("앨범으로 이도오오옹")
-//                        
-//                    } label: {
-//                        Text("사진 앨범")
-//                            .font(.system(size: 20, weight: .light))
-//                            .foregroundColor(.gray100)
-//                    }
-//                    Spacer()
-//                    
-//                    Text("카메라")
-//                        .font(.system(size: 20, weight: .medium))
-//                        .foregroundColor(.white)
-//                    
-//                }
-//                .padding(.horizontal, 30)
+                //                HStack {
+                //                    Button {
+                //                        print("앨범으로 이도오오옹")
+                //
+                //                    } label: {
+                //                        Text("사진 앨범")
+                //                            .font(.system(size: 20, weight: .light))
+                //                            .foregroundColor(.gray100)
+                //                    }
+                //                    Spacer()
+                //
+                //                    Text("카메라")
+                //                        .font(.system(size: 20, weight: .medium))
+                //                        .foregroundColor(.white)
+                //
+                //                }
+                //                .padding(.horizontal, 30)
                 
             }
             .background(Color.background)
+        }
+        .onChange(of: isDismiss) {
+            dismiss()
+            
         }
         .opacity(viewModel.shutterEffect ? 0 : 1)  // 투명도 조절로 셔터가 깜빡이는 효과
         .navigationBarHidden(true)

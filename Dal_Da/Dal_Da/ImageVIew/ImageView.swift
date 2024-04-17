@@ -17,6 +17,8 @@ struct ImageView: View {
     @State private var showDate = true
     @State private var showMoobShape = true
     
+    @Binding var isDismiss: Bool
+    
     // 현재 날짜를 저장하는 프로퍼티
     let currentDate = Date()
     
@@ -41,8 +43,9 @@ struct ImageView: View {
                     Spacer()
                     
                     Button {
+                        isDismiss = true
                         viewModel.savePhoto(image)
-                        dismiss()
+                        dismiss()  // 이미지 뷰만 내려감
                     } label: {
                         Text("저장")
                             .font(.system(size: 15, weight: .light))
