@@ -76,13 +76,13 @@ class Camera: NSObject, ObservableObject {
         print("[Camera]: Photo's taken")
     }
     
-    func savePhoto(_ imageData: Data) {
-        guard let image = UIImage(data: imageData) else { return }
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-        
-        // 사진 저장하기
-        print("[Camera]: Photo's saved")
-    }
+//    func savePhoto(_ imageData: Data) {
+//        guard let image = UIImage(data: imageData) else { return }
+//        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+//        
+//        // 사진 저장하기
+//        print("[Camera]: Photo's saved")
+//    }
     
     func zoom(_ zoom: CGFloat){
         let factor = zoom < 1 ? 1 : zoom
@@ -178,7 +178,7 @@ extension Camera: AVCapturePhotoCaptureDelegate {
         self.recentImage = UIImage(data: imageData)
         // SwiftUI의 Image View로 넘겨줘도 되지만 UIImage는 optional을 리턴한다.
         
-        self.savePhoto(imageData)  // UIImage로 변환
+//        self.savePhoto(imageData)  // UIImage로 변환
         
         self.isCameraBusy = false
     }

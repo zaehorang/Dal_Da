@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CameraView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) private var dismiss
     
     @ObservedObject var viewModel = CameraViewModel()
     
@@ -20,7 +20,7 @@ struct CameraView: View {
                 HStack {
                     
                     Button {
-                        self.presentationMode.wrappedValue.dismiss()
+                        dismiss()
 
                     } label: {
                         Image(systemName: "chevron.backward")
@@ -92,21 +92,31 @@ struct CameraView: View {
                     
                     Spacer()
                     
-                    
+//                    NavigationLink {
+//                        ImageView(viewModel: viewModel, image: viewModel.recentImage)
+//                    } label: {
+//                        Button {
+//                            viewModel.capturePhoto()
+//
+//                        } label: {
+//                            Image(Asset.moonButton.fileName)
+//                            
+//                        }
+//                    }
                     // 사진찍기 버튼
                     Button {
                         viewModel.capturePhoto()
-                        
-                        
-                        
+
                     } label: {
                         Image(Asset.moonButton.fileName)
                         
                     }
                     .fullScreenCover(isPresented: $viewModel.photoTaken) {
                         
-                        ImageView(image: viewModel.recentImage)
+                        ImageView(viewModel: viewModel, image: viewModel.recentImage)
                     }
+
+                    
                     Spacer()
                     
                     // 플레시 온오프
@@ -125,23 +135,23 @@ struct CameraView: View {
                     
                 }
                 
-                HStack {
-                    Button {
-                        print("앨범으로 이도오오옹")
-                        
-                    } label: {
-                        Text("사진 앨범")
-                            .font(.system(size: 20, weight: .light))
-                            .foregroundColor(.gray100)
-                    }
-                    Spacer()
-                    
-                    Text("카메라")
-                        .font(.system(size: 20, weight: .medium))
-                        .foregroundColor(.white)
-                    
-                }
-                .padding(.horizontal, 30)
+//                HStack {
+//                    Button {
+//                        print("앨범으로 이도오오옹")
+//                        
+//                    } label: {
+//                        Text("사진 앨범")
+//                            .font(.system(size: 20, weight: .light))
+//                            .foregroundColor(.gray100)
+//                    }
+//                    Spacer()
+//                    
+//                    Text("카메라")
+//                        .font(.system(size: 20, weight: .medium))
+//                        .foregroundColor(.white)
+//                    
+//                }
+//                .padding(.horizontal, 30)
                 
             }
             .background(Color.background)

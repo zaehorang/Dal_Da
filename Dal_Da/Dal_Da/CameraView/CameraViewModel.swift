@@ -57,7 +57,15 @@ class CameraViewModel: ObservableObject {
             print("[CameraViewModel]: Photo captured!")
         } else {
             print("[CameraViewModel]: Camera's busy.")
-        }    }
+        }
+    }
+    
+    func savePhoto(_ image: UIImage?) {
+        guard let image = image else { return }
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        // 사진 저장하기
+        print("[Camera]: Photo's saved")
+    }
     
     func zoom(factor: CGFloat) {  // Camera의 onChange에서 호출하는 줌 기능
         let delta = factor / lastScale

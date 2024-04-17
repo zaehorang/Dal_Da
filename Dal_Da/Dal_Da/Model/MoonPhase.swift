@@ -10,24 +10,24 @@ import Foundation
 enum MoonPhase: Int {
     case newMoon = 0, waxingCrescent, firstQuarter, waxingGibbous, fullMoon, waningGibbous, lastQuarter, waningCrescent
 
-    var details: (englishName: String, koreanName: String, emoji: String) {
+    var details: (systemName: String, englishName: String, koreanName: String, emoji: String) {
         switch self {
         case .newMoon:
-            return ("New Moon", "신월", "🌑")
+            return ("moonphase.new.moon", "New Moon", "신월", "🌑")
         case .waxingCrescent:
-            return ("Waxing Crescent Moon", "초승달", "🌒")
+            return ("moonphase.waxing.crescent", "Waxing Crescent Moon", "초승달", "🌒")
         case .firstQuarter:
-            return ("First Quarter Moon", "상현달", "🌓")
+            return ("moonphase.first.quarter", "First Quarter Moon", "상현달", "🌓")
         case .waxingGibbous:
-            return ("Waxing Gibbous Moon", "보름달이 되어가는 상현달", "🌔")
+            return ("moonphase.waxing.gibbous", "Waxing Gibbous Moon", "보름달이 되어가는 상현달", "🌔")
         case .fullMoon:
-            return ("Full Moon", "보름달", "🌕")
+            return ("moonphase.full.moon", "Full Moon", "보름달", "🌕")
         case .waningGibbous:
-            return ("Waning Gibbous Moon", "보름달이 줄어드는 달", "🌖")
+            return ("moonphase.waning.gibbous", "Waning Gibbous Moon", "보름달이 줄어드는 달", "🌖")
         case .lastQuarter:
-            return ("Last Quarter Moon", "하현달", "🌗")
+            return ("moonphase.last.quarter", "Last Quarter Moon", "하현달", "🌗")
         case .waningCrescent:
-            return ("Waning Crescent Moon", "그믐달", "🌘")
+            return ("moonphase.waning.crescent", "Waning Crescent Moon", "그믐달", "🌘")
         }
     }
 

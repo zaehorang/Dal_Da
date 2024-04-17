@@ -11,6 +11,7 @@ import SwiftUI
 struct ImageView: View {
     
     @Environment(\.dismiss) var dismiss
+    @ObservedObject var viewModel: CameraViewModel
     
     @State private var memo = ""
     @State private var showDate = true
@@ -40,7 +41,8 @@ struct ImageView: View {
                     Spacer()
                     
                     Button {
-                        
+                        viewModel.savePhoto(image)
+                        dismiss()
                     } label: {
                         Text("저장")
                             .font(.system(size: 15, weight: .light))
@@ -65,7 +67,6 @@ struct ImageView: View {
                     
                     Image(uiImage: image)
                         .resizable()
-                    
                         .overlay( // 이 부분에서 그라디언트를 이미지 위에 추가
                             LinearGradient(gradient: Gradient(colors: [.clear, .black.opacity(0.3)]), startPoint: .center, endPoint: .bottom)// 그라디언트의 투명도 조절
                         )
@@ -107,8 +108,10 @@ struct ImageView: View {
 }
 
 
-#Preview {
-    ImageView()
-}
+//#Preview {
+//    let viewModel = CameraViewModel()
+//    
+//    ImageView(viewModel: viewModel)
+//}
 
 

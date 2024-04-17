@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct DateView: View {
-    var moonName = "Full Moon"
     
     // 현재 날짜를 저장하는 프로퍼티
     let currentDate = Date()
     
     var body: some View {
         HStack(spacing: 16) {
-            Image(Asset.moonImage.fileName)
+            Image(systemName: DateUtilities.moonPhaseSystemName(on: currentDate))
+                .resizable()
+                .frame(width: 30, height: 30)
                 .padding(.leading, 16)
             VStack(alignment: .leading, spacing: 2) {
                 Text(DateUtilities.formatDateTime(currentDate, formatType: "MMM dd, yyyy"))
