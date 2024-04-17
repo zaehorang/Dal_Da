@@ -15,7 +15,7 @@ struct ImageView: View {
     
     @State private var memo = ""
     @State private var showDate = true
-    @State private var showMoobShape = true
+    @State private var showMoonShape = true
     
     @Binding var isDismiss: Bool
     
@@ -84,16 +84,18 @@ struct ImageView: View {
                 
                 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(DateUtilities.formatDateTime(currentDate, formatType: "MMM dd, yyyy")) // 날짜
-                        .font(.system(size: 36, weight: .medium))
-                        .foregroundColor(.white)
-                    
+                    if showDate {
+                        Text(DateUtilities.formatDateTime(currentDate, formatType: "MMM dd, yyyy")) // 날짜
+                            .font(.system(size: 36, weight: .medium))
+                            .foregroundColor(.white)
+                    }
                     
                     VStack(alignment: .leading, spacing: 10) {
-                        Text("\(DateUtilities.formatDateTime(currentDate, formatType: "EEEE")), \(DateUtilities.moonPhaseEnglishName(on: currentDate))")  // 요일
+                        if showMoonShape {
+                            Text("\(DateUtilities.formatDateTime(currentDate, formatType: "EEEE")), \(DateUtilities.moonPhaseEnglishName(on: currentDate))")  // 요일
                             .font(.system(size: 14, weight: .regular))
                             .foregroundColor(.white)
-                        
+                    }
                         Text(memo)
                             .font(.system(size: 16, weight: .regular))
                             .foregroundColor(.white)
@@ -103,9 +105,9 @@ struct ImageView: View {
                 
             }
             
-            ImageInfoView(memo: $memo, showDate: $showDate, showMoobShape: $showMoobShape)
-            
+            ImageInfoView(memo: $memo, showDate: $showDate, showMoobShape: $showMoonShape)
         }
+        
     }
     
 }
@@ -113,7 +115,7 @@ struct ImageView: View {
 
 //#Preview {
 //    let viewModel = CameraViewModel()
-//    
+//
 //    ImageView(viewModel: viewModel)
 //}
 

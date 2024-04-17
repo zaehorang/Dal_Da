@@ -13,24 +13,38 @@ struct MoonCardView: View {
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            Image(moon.image)
-                .resizable()
-                .frame(width: 300, height: 500)
-                .overlay( // 이 부분에서 그라디언트를 이미지 위에 추가
-                    LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .center, endPoint: .bottom)// 그라디언트의 투명도 조절
-                )
-                .cornerRadius(24)
+            if let uiImage = UIImage(data: moon.image) {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .frame(width: 300, height: 500)
+                    .overlay( // 이 부분에서 그라디언트를 이미지 위에 추가
+                        LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .center, endPoint: .bottom)// 그라디언트의 투명도 조절
+                    )
+                    .cornerRadius(24)
+                
+            } else {
+                Image("Moon1")
+                    .resizable()
+                    .frame(width: 300, height: 500)
+                    .overlay( // 이 부분에서 그라디언트를 이미지 위에 추가
+                        LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .center, endPoint: .bottom)// 그라디언트의 투명도 조절
+                    )
+                    .cornerRadius(24)
+            }
+            
+            
             
             
             VStack(alignment: .leading, spacing: 8) {
                 // 이미지 중앙에 위치할 텍스트
-                Text(moon.date)
+                Text(DateUtilities.formatDateTime(moon.date, formatType: "MMM dd, yyyy"))
                     .font(.system(size: 36, weight: .medium))
                     .foregroundColor(.white)
                 
                 // 이미지 하단에 위치할 텍스트
                 VStack(alignment: .leading,spacing:4) {
-                    Text(moon.shape)
+                    //
+                    Text("\(DateUtilities.formatDateTime(moon.date, formatType: "EEEE")), \(moon.shape.details.englishName)")
                         .font(.system(size: 16, weight: .regular))
                         .foregroundColor(.gray100)
                     

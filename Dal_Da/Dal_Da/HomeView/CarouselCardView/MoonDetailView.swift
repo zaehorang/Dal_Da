@@ -11,7 +11,7 @@ struct MoonDetailView: View {
     var moon: MoonCard
     
     var body: some View {
-        Text("Details for \(moon.shape)")
+        Text("Details for \(moon.shape.details.englishName)")
             .font(.title)
             .padding()
     }

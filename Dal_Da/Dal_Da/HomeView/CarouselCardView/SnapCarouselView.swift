@@ -15,7 +15,7 @@ struct SnapCarouselView: View {
     
     
     // 표시할 이미지 데이터 배열
-    private let moons = MoonCard.previews
+    @Binding var moons: [MoonCard]
     
     var body: some View {
         // 네비게이션 스택을 사용하여 뷰를 구성
@@ -26,17 +26,17 @@ struct SnapCarouselView: View {
                         .resizable()
                         .ignoresSafeArea(.all)
                     
-                    ForEach(moons) { moon in
+                    ForEach(Array(zip(moons.indices, moons)), id: \.0) { index, moon in
                         
                         MoonCardView(moon: moon)
                             .frame(width: 300, height: 500)  // 이미지 크기 지정
                             .cornerRadius(25)                // 이미지 모서리를 둥글게 처리
                         // 현재 인덱스의 이미지는 투명도 1.0, 나머지는 0.7로 설정하여 구분
-                            .opacity(currentIndex == moon.id ? 1.0 : 0.7)
+                            .opacity(currentIndex == index ? 1.0 : 0.7)
                         // 현재 인덱스의 이미지는 크기를 1.2배로, 나머지는 0.8배로 설정
-                            .scaleEffect(currentIndex == moon.id ? 1.2 : 0.8)
+                            .scaleEffect(currentIndex == index ? 1.2 : 0.8)
                         // 이미지의 수평 위치를 currentIndex와 dragOffset에 따라 동적으로 조정
-                            .offset(x: CGFloat(moon.id - currentIndex) * 310 + dragOffset, y: 0)
+                            .offset(x: CGFloat(index - currentIndex) * 310 + dragOffset, y: 0)
                         
                     }
                 }
@@ -68,5 +68,9 @@ struct SnapCarouselView: View {
 
 
 #Preview {
-    SnapCarouselView()
+    SnapCarouselView(moons: .constant([
+        MoonCard(date: Date(), shape: .fullMoon, memo: "주저리 주저리 주저리 주저리 주저리 주저리", image: UIImage(named: "Moon1")!.pngData()!),
+        MoonCard(date: Date(), shape: .fullMoon, memo: "주저리 주저리 주저리 주저리주저리 주저리", image: UIImage(named: "Moon2")!.pngData()!),
+        MoonCard(date: Date(), shape: .fullMoon, memo: "주저리 주저리 주저리 주저리주저리 주저리", image: UIImage(named: "Moon3")!.pngData()!),
+    ]))
 }
