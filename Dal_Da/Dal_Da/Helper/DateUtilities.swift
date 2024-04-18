@@ -29,9 +29,9 @@ struct DateUtilities {
         return phase.details.englishName
     }
     
-    static func moonPhaseSystemName(on date: Date) -> String {
+    static func moonPhaseImageName(on date: Date) -> String {
         let phase = MoonPhase.currentPhase(on: date)
-        return phase.details.systemName
+        return phase.details.englishName
     }
 }
 

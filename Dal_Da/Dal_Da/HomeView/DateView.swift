@@ -14,7 +14,7 @@ struct DateView: View {
     
     var body: some View {
         HStack(spacing: 16) {
-            Image(systemName: DateUtilities.moonPhaseSystemName(on: currentDate))
+            Image(DateUtilities.moonPhaseImageName(on: currentDate))
                 .resizable()
                 .frame(width: 30, height: 30)
                 .padding(.leading, 16)
