@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import TipKit
 
 @main
 struct Dal_DaApp: App {
@@ -15,7 +16,16 @@ struct Dal_DaApp: App {
         WindowGroup {
             ContentView()
                 .modelContainer(for: Moon.self)
+                .task {
+//                    try? Tips.resetDatastore()
+                    // Configure and load your tips at app launch.
+                    try? Tips.configure([
+                        .displayFrequency(.immediate),
+                        .datastoreLocation(.applicationDefault)
+                    ])
+                }
         }
+        
         
     }
 }

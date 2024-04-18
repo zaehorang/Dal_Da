@@ -49,7 +49,9 @@ struct ImageView: View {
                         // 로컬에 데이터 저장
                         if let image {
                             let newMoon = Moon(date: showDate ? currentDate : nil, shape: showMoonShape ?  moonShape : "", memo: memo, image: image.pngData()!)
+                            
                             modelContext.insert(newMoon)
+                            
                             // 데이터 저자아아아앙
                         }
                         

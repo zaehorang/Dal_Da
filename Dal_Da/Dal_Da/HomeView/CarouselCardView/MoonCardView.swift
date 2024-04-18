@@ -42,7 +42,7 @@ struct MoonCardView: View {
                             
                             
                             
-                            //                            Divider()
+                            Divider()
                             
                             Button(role: .destructive) {
                                 print("누ㅠㄹ림ㄴㅇㄹㅁ닝러ㅣ마넝ㄹ")
@@ -61,17 +61,18 @@ struct MoonCardView: View {
                         .alert(isPresented: $activeAlert) {
                             
                             if showingDeleteAlert {
-//                                showingDeleteAlert.toggle()
+                                //                                showingDeleteAlert.toggle()
                                 
                                 Alert(title: Text("이미지 삭제"), message: Text("삭제된 이미지는 복구할 수 없습니다.\n정말로 삭제하시겠습니까?"), primaryButton: .destructive(Text("삭제"), action: {
                                     //some Action
                                     modelContext.delete(moon)
+                                    
                                 }), secondaryButton: .cancel(Text("취소"), action: {
                                     showingDeleteAlert.toggle()
                                 }))
                                 
                             } else {
-//                                showingSaveAlert.toggle()
+                                //                                showingSaveAlert.toggle()
                                 Alert(title: Text("이미지 저장"), message: Text("이 이미지를 사진 앨범에 저장하려고 합니다.\n저장하시겠습니까?"), primaryButton: .default(Text("저장"), action: {
                                     //some Action
                                     savePhoto(uiImage)
@@ -83,7 +84,7 @@ struct MoonCardView: View {
                             
                         }
                     }
-                        
+                
                     .cornerRadius(24)
                 
             } else {
@@ -163,3 +164,5 @@ struct MoonCardView: View {
     
     return MoonCardView(moon: moon1)
 }
+
+

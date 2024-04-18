@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		261073A82BD1438E000AD28D /* MoonButtonTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261073A72BD1438E000AD28D /* MoonButtonTip.swift */; };
 		26FA68EF2BCA577900FD33CD /* Dal_DaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FA68EE2BCA577900FD33CD /* Dal_DaApp.swift */; };
 		26FA68F12BCA577900FD33CD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FA68F02BCA577900FD33CD /* ContentView.swift */; };
 		26FA68F32BCA577B00FD33CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26FA68F22BCA577B00FD33CD /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		261073A72BD1438E000AD28D /* MoonButtonTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonButtonTip.swift; sourceTree = "<group>"; };
 		26FA68EB2BCA577900FD33CD /* Dal_Da.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dal_Da.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26FA68EE2BCA577900FD33CD /* Dal_DaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dal_DaApp.swift; sourceTree = "<group>"; };
 		26FA68F02BCA577900FD33CD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				26FA69352BCEEC7400FD33CD /* DateUtilities.swift */,
+				261073A72BD1438E000AD28D /* MoonButtonTip.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				26FA690D2BCB835600FD33CD /* SnapCarouselView.swift in Sources */,
 				26FA69392BCEEEF900FD33CD /* MoonPhase.swift in Sources */,
 				26FA69362BCEEC7400FD33CD /* DateUtilities.swift in Sources */,
+				261073A82BD1438E000AD28D /* MoonButtonTip.swift in Sources */,
 				26FA68EF2BCA577900FD33CD /* Dal_DaApp.swift in Sources */,
 				26FA68FD2BCA58FF00FD33CD /* SplashView.swift in Sources */,
 				26FA69202BCD15C200FD33CD /* CameraPreviewView.swift in Sources */,
