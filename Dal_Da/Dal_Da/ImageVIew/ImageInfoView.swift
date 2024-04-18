@@ -22,9 +22,11 @@ struct ImageInfoView: View {
                     .foregroundColor(.white)
                 
                 TextField("Memo", text: $memo)
+                    .padding()
                     .frame(height: 34)
                     .background(.blueGray)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .font(.system(size: 17, weight: .light))
             }
             
             Divider()
@@ -54,3 +56,6 @@ struct ImageInfoView: View {
 }
 
  
+#Preview {
+    ImageInfoView(memo: .constant("일이삼사오육칠팔구십일이삼사오육칠팔"), showDate: .constant(true), showMoobShape: .constant(true))
+}

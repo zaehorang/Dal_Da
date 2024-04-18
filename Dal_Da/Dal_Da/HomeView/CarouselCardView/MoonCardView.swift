@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 
 struct MoonCardView: View {
+    @Environment(\.modelContext) private var modelContext
+    
     var moon: Moon
     
     var body: some View {
@@ -20,6 +23,35 @@ struct MoonCardView: View {
                     .overlay( // 이 부분에서 그라디언트를 이미지 위에 추가
                         LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .center, endPoint: .bottom)// 그라디언트의 투명도 조절
                     )
+                    .overlay(alignment: .topTrailing) {
+                        
+                        Menu {
+                            
+                            Button {
+                                savePhoto(uiImage)
+                                print("Save~~~~~~~~~~~")
+                            } label: {
+                                Label("Save", systemImage: "square.and.arrow.down")
+                            }
+
+                            
+                            Divider()
+                            
+                            Button(role: .destructive) {
+                                modelContext.delete(moon)
+                                print("Delete~~~~~~~~~~~~~")
+                                
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                            
+                        } label: {
+                            Image("Three Dots")
+                        }
+                        .padding()
+                        
+                        
+                    }
                     .cornerRadius(24)
                 
             } else {
@@ -58,8 +90,22 @@ struct MoonCardView: View {
             .padding(.bottom, 20)
         }
     }
+    
+    func savePhoto(_ image: UIImage?) {
+        guard let image = image else { return }
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        // 사진 저장하기
+        print("[Camera]: Photo's saved")
+    }
+
+    
 }
 
 #Preview {
-    MoonCardView(moon: Moon(date: Date(), shape: "Full Moon", memo: "주저리 주저리 주저리 주저리 주저리 주저리", image: UIImage(named: "Moon1")!.pngData()!))
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: Moon.self, configurations: config)
+    
+    let moon1 = Moon(date: .now, shape: "Full Moon", memo: "dddd", image: UIImage(named: "Moon3")!.pngData()!)
+    
+    return MoonCardView(moon: moon1)
 }

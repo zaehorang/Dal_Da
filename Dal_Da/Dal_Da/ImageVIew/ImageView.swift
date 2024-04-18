@@ -48,12 +48,13 @@ struct ImageView: View {
                         if let image {
                             let newMoon = Moon(date: currentDate, shape: moonShape, memo: memo, image: image.pngData()!)
                             modelContext.insert(newMoon)
-                            
                             // 데이터 저자아아아앙
                         }
+                        
                         isDismiss = true
-//                        viewModel.savePhoto(image)
                         dismiss()  // 이미지 뷰만 내려감
+                        //                        viewModel.savePhoto(image)
+                        
                     } label: {
                         Text("저장")
                             .font(.system(size: 15, weight: .light))

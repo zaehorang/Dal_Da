@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct SnapCarouselView: View {
     // 현재 보여지고 있는 이미지의 인덱스를 관리하는 State 변수
@@ -61,6 +62,9 @@ struct SnapCarouselView: View {
                     }
             )
         }
+        .onAppear {
+            currentIndex = 0  // 최근 사진부터 보여주기 위함
+        }
     }
     
 }
@@ -68,9 +72,12 @@ struct SnapCarouselView: View {
 
 
 #Preview {
-    SnapCarouselView(moons: [
-        Moon(date: Date(), shape: "fullMoon", memo: "주저리 주저리 주저리 주저리 주저리 주저리", image: UIImage(named: "Moon1")!.pngData()!),
-        Moon(date: Date(), shape: "Full Moon", memo: "주저리 주저리 주저리 주저리주저리 주저리", image: UIImage(named: "Moon2")!.pngData()!),
-        Moon(date: Date(), shape: "Full Moon", memo: "주저리 주저리 주저리 주저리주저리 주저리", image: UIImage(named: "Moon3")!.pngData()!),
-    ])
+
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: Moon.self, configurations: config)
+    
+    let moons = [Moon(date: .now, shape: "Full Moon", memo: "dddd", image: UIImage(named: "Moon3")!.pngData()!), Moon(date: .now, shape: "Full Moon", memo: "fqwef", image: UIImage(named: "Moon3")!.pngData()!),Moon(date: .now, shape: "Full Moon", memo: "fasdfqwef", image: UIImage(named: "Moon3")!.pngData()!),Moon(date: .now, shape: "Full Moon", memo: "dddd", image: UIImage(named: "Moon3")!.pngData()!),Moon(date: .now, shape: "Full Moon", memo: "ddddsaadfadf", image: UIImage(named: "Moon3")!.pngData()!)]
+
+    return SnapCarouselView(moons: moons)
+        
 }
