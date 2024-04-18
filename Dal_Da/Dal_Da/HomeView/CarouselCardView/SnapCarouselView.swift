@@ -35,9 +35,9 @@ struct SnapCarouselView: View {
                         // 현재 인덱스의 이미지는 투명도 1.0, 나머지는 0.7로 설정하여 구분
                             .opacity(currentIndex == index ? 1.0 : 0.7)
                         // 현재 인덱스의 이미지는 크기를 1.2배로, 나머지는 0.8배로 설정
-                            .scaleEffect(currentIndex == index ? 1.2 : 0.8)
+                            .scaleEffect(currentIndex == index ? 1.1 : 0.8)
                         // 이미지의 수평 위치를 currentIndex와 dragOffset에 따라 동적으로 조정
-                            .offset(x: CGFloat(index - currentIndex) * 310 + dragOffset, y: 0)
+                            .offset(x: CGFloat(index - currentIndex) * 300 + dragOffset, y: 0)
                         
                     }
                 }
