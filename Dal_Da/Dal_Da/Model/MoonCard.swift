@@ -10,12 +10,12 @@ import SwiftData
 
 @Model
 final class Moon {
-    var date: Date
+    var date: Date?
     var shape: String
     var memo: String
     var image: Data
     
-    init(date: Date = .now, shape: String, memo: String, image: Data) {
+    init(date: Date?, shape: String, memo: String, image: Data) {
         //        self.id = id
         self.date = date
         self.shape = shape

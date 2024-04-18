@@ -13,6 +13,8 @@ struct MoonCardView: View {
     @Environment(\.modelContext) private var modelContext
     
     var moon: Moon
+    @State private var showingDeleteAlert = false
+    @State private var showingSaveAlert = false
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
@@ -28,18 +30,18 @@ struct MoonCardView: View {
                         Menu {
                             
                             Button {
-                                savePhoto(uiImage)
+                                showingSaveAlert.toggle()
                                 print("Save~~~~~~~~~~~")
                             } label: {
                                 Label("Save", systemImage: "square.and.arrow.down")
                             }
-
+                            
+                            
                             
                             Divider()
                             
                             Button(role: .destructive) {
-                                modelContext.delete(moon)
-                                print("Delete~~~~~~~~~~~~~")
+                                showingDeleteAlert.toggle()
                                 
                             } label: {
                                 Label("Delete", systemImage: "trash")
@@ -49,6 +51,18 @@ struct MoonCardView: View {
                             Image("Three Dots")
                         }
                         .padding()
+                        .alert(isPresented: $showingDeleteAlert) {
+                            Alert(title: Text("이미지 삭제"), message: Text("삭제된 이미지는 복구할 수 없습니다.\n정말로 삭제하시겠습니까?"), primaryButton: .destructive(Text("삭제"), action: {
+                                //some Action
+                                modelContext.delete(moon)
+                            }), secondaryButton: .cancel(Text("취소")))
+                        }
+                        .alert(isPresented: $showingSaveAlert) {
+                            Alert(title: Text("이미지 저장"), message: Text("이 이미지를 사진 앨범에 저장하려고 합니다.\n저장하시겠습니까?"), primaryButton: .default(Text("저장"), action: {
+                                //some Action
+                                savePhoto(uiImage)
+                            }), secondaryButton: .cancel(Text("취소")))
+                        }
                         
                         
                     }
@@ -69,25 +83,47 @@ struct MoonCardView: View {
             
             VStack(alignment: .leading, spacing: 8) {
                 // 이미지 중앙에 위치할 텍스트
-                Text(DateUtilities.formatDateTime(moon.date, formatType: "MMM dd, yyyy"))
-                    .font(.system(size: 36, weight: .medium))
-                    .foregroundColor(.white)
                 
-                // 이미지 하단에 위치할 텍스트
-                VStack(alignment: .leading,spacing:4) {
-                    //
-                    Text("\(DateUtilities.formatDateTime(moon.date, formatType: "EEEE")), \(DateUtilities.moonPhaseEnglishName(on: moon.date))")
-                        .font(.system(size: 16, weight: .regular))
-                        .foregroundColor(.gray100)
+                if let date = moon.date {  // moon에 날짜가 있으면
                     
-                    Text(moon.memo)
-                        .font(.system(size: 16, weight: .regular))
-                        .foregroundColor(.gray100)
+                    Text(DateUtilities.formatDateTime(date, formatType: "MMM dd, yyyy"))
+                        .font(.system(size: 36, weight: .medium))
+                        .foregroundColor(.white)
+                    
+                    // 이미지 하단에 위치할 텍스트
+                    VStack(alignment: .leading,spacing:4) {
+                        
+                        Text("\(DateUtilities.formatDateTime(date, formatType: "EEEE"))\(moon.shape == "" ? "" : ", \(moon.shape)")")
+                            .font(.system(size: 16, weight: .regular))
+                            .foregroundColor(.white)
+                        
+                        Text(moon.memo)
+                            .font(.system(size: 16, weight: .regular))
+                            .foregroundColor(.white)
+                        
+                    }
+                    
+                    
+                } else {  // 날짜가 없으면
+                    
+                    // 이미지 하단에 위치할 텍스트
+                    VStack(alignment: .leading,spacing:4) {
+                        Text(moon.shape)
+                            .font(.system(size: 16, weight: .regular))
+                            .foregroundColor(.white)
+                        
+                        Text(moon.memo)
+                            .font(.system(size: 16, weight: .regular))
+                            .foregroundColor(.white)
+                        
+                    }
+                    
                     
                 }
             }
             .padding(.leading, 24)
             .padding(.bottom, 20)
+            
         }
     }
     
@@ -97,7 +133,7 @@ struct MoonCardView: View {
         // 사진 저장하기
         print("[Camera]: Photo's saved")
     }
-
+    
     
 }
 

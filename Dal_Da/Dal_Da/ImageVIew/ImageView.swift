@@ -29,6 +29,7 @@ struct ImageView: View {
         let moonShape = DateUtilities.moonPhaseEnglishName(on: currentDate)
         
         VStack(spacing: 0) {
+            
             ZStack {
                 
                 HStack {
@@ -45,15 +46,15 @@ struct ImageView: View {
                     Spacer()
                     
                     Button {
+                        // 로컬에 데이터 저장
                         if let image {
-                            let newMoon = Moon(date: currentDate, shape: moonShape, memo: memo, image: image.pngData()!)
+                            let newMoon = Moon(date: showDate ? currentDate : nil, shape: showMoonShape ?  moonShape : "", memo: memo, image: image.pngData()!)
                             modelContext.insert(newMoon)
                             // 데이터 저자아아아앙
                         }
                         
                         isDismiss = true
                         dismiss()  // 이미지 뷰만 내려감
-                        //                        viewModel.savePhoto(image)
                         
                     } label: {
                         Text("저장")
@@ -76,7 +77,6 @@ struct ImageView: View {
             ZStack(alignment: .bottomLeading) {
                 
                 if let image {
-                    
                     Image(uiImage: image)
                         .resizable()
                         .overlay( // 이 부분에서 그라디언트를 이미지 위에 추가
@@ -91,7 +91,6 @@ struct ImageView: View {
                     
                 }
                 
-                
                 VStack(alignment: .leading, spacing: 2) {
                     if showDate {
                         Text(DateUtilities.formatDateTime(currentDate, formatType: "MMM dd, yyyy")) // 날짜
@@ -100,11 +99,18 @@ struct ImageView: View {
                     }
                     
                     VStack(alignment: .leading, spacing: 10) {
-                        if showMoonShape {
-                            Text("\(DateUtilities.formatDateTime(currentDate, formatType: "EEEE")), \(moonShape)")  // 요일
-                            .font(.system(size: 14, weight: .regular))
-                            .foregroundColor(.white)
-                    }
+                        
+                        if showDate {
+                            Text("\(DateUtilities.formatDateTime(currentDate, formatType: "EEEE"))\(showMoonShape ? ", " + moonShape : "" )")  // 요일
+                                .font(.system(size: 14, weight: .regular))
+                                .foregroundColor(.white)
+                            
+                        } else {
+                            Text(showMoonShape ? moonShape : "")  // 요일
+                                .font(.system(size: 14, weight: .regular))
+                                .foregroundColor(.white)
+                        }
+                        
                         Text(memo)
                             .font(.system(size: 16, weight: .regular))
                             .foregroundColor(.white)
@@ -121,4 +127,6 @@ struct ImageView: View {
     
 }
 
+
+// Text("\(DateUtilities.formatDateTime(date, formatType: "EEEE"))\(moon.shape == "" ? "" : ", \(moon.shape)")")
 
